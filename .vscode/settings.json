@@ -1,0 +1,59 @@
+{
+  // Snippet Ayarları - Snippet'lerin çalışması için
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  
+  // AI ve IntelliSense Ayarları
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.preview": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.wordBasedSuggestions": true,
+  "editor.parameterHints.enabled": true,
+  
+  // Dil Bazlı Ayarlar
+  "[typescript]": {
+    "editor.suggest.showSnippets": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.suggest.showSnippets": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.suggest.showSnippets": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.suggest.showSnippets": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  
+  // TypeScript Ayarları
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  
+  // Cursor AI Ayarları
+  "cursor.cpp.disabledLanguages": [],
+  
+  // Genel Editor Ayarları
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000
+}
+
