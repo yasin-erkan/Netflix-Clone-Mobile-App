@@ -1,97 +1,193 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Netflix Clone - React Native
 
-# Getting Started
+https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates the core UI/UX features of Netflix and integrates with The Movie Database (TMDB) API to fetch real movie data.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+> **Note:** This project is currently under active development. Features are being added incrementally.
 
-## Step 1: Start Metro
+## 📱 Features Implemented
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### ✅ Current Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **Bottom Tab Navigation** with 4 main sections:
+  - Home
+  - News
+  - Search
+  - Downloads
+- **Redux Toolkit Integration** for state management
+- **Axios Instance Configuration** for API calls
+- **Movie Data Integration** with TMDB API
+- **Custom Tab Bar Icons** using Iconsax
+- **Safe Area Context** for proper display on all devices
+- **TypeScript** for type safety
+- **Custom App Icon & Splash Screen**
 
-```sh
-# Using npm
-npm start
+### 🚧 In Progress
 
-# OR using Yarn
-yarn start
+- Additional features and screens are being developed
+
+## 🛠 Tech Stack
+
+- **Framework:** React Native 0.82.0
+- **Language:** TypeScript 5.8.3
+- **Navigation:** React Navigation (Bottom Tabs & Native Stack)
+- **State Management:** Redux Toolkit 2.9.0
+- **HTTP Client:** Axios 1.12.2
+- **Icons:** Iconsax React Native
+- **UI Components:** React Native SVG, Safe Area Context
+
+## 📋 Prerequisites
+
+Before running this project, make sure you have:
+
+- Node.js >= 20
+- npm or yarn
+- React Native development environment set up
+  - For iOS: Xcode (macOS only)
+  - For Android: Android Studio
+- CocoaPods (for iOS)
+- TMDB API Key
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd netflixClone
 ```
 
-## Step 2: Build and run your app
+### 2. Install dependencies
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npm install
 ```
 
-### iOS
+### 3. Install iOS dependencies (macOS only)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+cd ios
+pod install
+cd ..
 ```
 
-Then, and every time you update your native dependencies, run:
+### 4. Configure API Keys
 
-```sh
-bundle exec pod install
+Create your API key and token from [The Movie Database (TMDB)](https://www.themoviedb.org/settings/api) and add them to:
+
+```
+src/utils/constants.ts
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### 5. Run the application
 
-```sh
-# Using npm
+#### For iOS:
+
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### For Android:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npm run android
+```
 
-## Step 3: Modify your app
+#### Start Metro Bundler:
 
-Now that you have successfully run the app, let's make changes!
+```bash
+npm start
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## 📁 Project Structure
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```
+netflixClone/
+├── src/
+│   ├── assets/          # Static assets (fonts, icons, images)
+│   ├── components/      # Reusable components
+│   │   ├── home/
+│   │   └── router/
+│   ├── models/          # TypeScript interfaces and types
+│   │   ├── data/
+│   │   └── ui/
+│   ├── router/          # Navigation configuration
+│   ├── screens/         # Application screens
+│   │   ├── home/
+│   │   ├── news/
+│   │   ├── search/
+│   │   └── downloads/
+│   ├── service/         # API configuration
+│   │   ├── instance.ts  # Axios instance
+│   │   ├── urls.ts      # API endpoints
+│   │   └── verbs.ts     # HTTP methods
+│   ├── store/           # Redux store configuration
+│   │   ├── actions/     # Redux async actions
+│   │   ├── slices/      # Redux slices
+│   │   └── store.ts     # Store configuration
+│   ├── styles/          # Global styles
+│   ├── themes/          # Theme configuration
+│   └── utils/           # Utility functions and constants
+├── android/             # Android native files
+├── ios/                 # iOS native files
+└── App.tsx             # Root component
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🔑 Key Components
 
-## Congratulations! :tada:
+### Redux Store
 
-You've successfully run and modified your React Native App. :partying_face:
+- **Movie Slice:** Manages movie data state
+- **Actions:** Async thunks for API calls
+- **Selectors:** State selectors for components
 
-### Now what?
+### Navigation
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- **Root Navigator:** Main navigation stack
+- **Bottom Tab Navigator:** Tab-based navigation for main screens
 
-# Troubleshooting
+### API Integration
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- Axios instance with pre-configured headers and base URL
+- Organized API endpoints and HTTP methods
+- Integration with TMDB API for movie data
 
-# Learn More
+## 📝 Available Scripts
 
-To learn more about React Native, take a look at the following resources:
+- `npm start` - Start Metro bundler
+- `npm run ios` - Run on iOS simulator
+- `npm run android` - Run on Android emulator
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🎨 Customization
+
+The app features a dark theme inspired by Netflix's UI:
+
+- Black background for screens and navigation
+- White and gray for text and icons
+- Custom tab bar with active/inactive states
+
+## 📱 Platform Support
+
+- ✅ iOS
+- ✅ Android
+
+## 🤝 Contributing
+
+This is a personal learning project. Suggestions and feedback are welcome!
+
+## 📄 License
+
+This project is for educational purposes only.
+
+## 🙏 Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API
+- Netflix for UI/UX inspiration
+- React Native community for excellent tools and libraries
+
+---
+
+**Status:** 🚧 Work in Progress - Actively being developed
+
+**Last Updated:** October 2025
