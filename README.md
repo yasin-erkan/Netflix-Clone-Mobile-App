@@ -13,9 +13,19 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
   - News
   - Search
   - Downloads
+- **Home Screen** with movie sections:
+  - Popular Movies
+  - Now Playing
+  - Top Rated
+  - Upcoming
+- **Movie Cards** with:
+  - High-quality posters from TMDB
+  - Movie titles
+  - Rating display with stars
+  - Smooth horizontal scrolling
 - **Redux Toolkit Integration** for state management
 - **Axios Instance Configuration** for API calls
-- **Movie Data Integration** with TMDB API
+- **Movie Data Integration** with TMDB API (4 categories)
 - **Custom Tab Bar Icons** using Iconsax
 - **Safe Area Context** for proper display on all devices
 - **TypeScript** for type safety
