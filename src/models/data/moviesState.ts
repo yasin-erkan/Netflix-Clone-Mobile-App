@@ -12,10 +12,14 @@ interface Movie {
   popularity?: number;
   vote_average: number;
   vote_count: number;
+  poster_path: string;
 }
 
 interface MoviesState {
   popularMovies: Movie[];
+  nowPlayingMovies: Movie[];
+  topRatedMovies: Movie[];;
+  upcomingMovies:Movie[]
   pending: boolean;
   error: SerializedError;
 }

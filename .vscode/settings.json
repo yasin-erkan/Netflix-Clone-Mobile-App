@@ -15,7 +15,7 @@
   "editor.suggestSelection": "first",
   "editor.acceptSuggestionOnCommitCharacter": true,
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.wordBasedSuggestions": true,
+  "editor.wordBasedSuggestions": "matchingDocuments",
   "editor.parameterHints.enabled": true,
   
   // Dil Bazlı Ayarlar

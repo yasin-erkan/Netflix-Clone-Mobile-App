@@ -1,29 +1,59 @@
 import React, {useEffect} from 'react';
 import {Text, StyleSheet, View, FlatList} from 'react-native';
 import {screenStyle} from '../../styles/defaultScreenStyle';
-import {POPULAR_URL} from '../../service/urls';
-import {getRequest} from '../../service/verbs';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../store/store';
-import {getPopularMovies} from '../../store/actions/moviesActions';
+import {
+  getPopularMovies,
+  getNowPlayingMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+} from '../../store/actions/moviesActions';
+import Section from '../../components/home/section';
 
-interface Props {}
-
-const Home: React.FC<Props> = () => {
-  const {popularMovies} = useSelector((state: RootState) => state.movies);
+const Home: React.FC = () => {
+  const {popularMovies, nowPlayingMovies, topRatedMovies, upcomingMovies} =
+    useSelector((state: RootState) => state.movies);
 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPopularMovies());
+    dispatch(getPopularMovies({page: 1}));
+    dispatch(getNowPlayingMovies({page: 2}));
+    dispatch(getTopRatedMovies({page: 3}));
+    dispatch(getUpcomingMovies({page: 4}));
   }, []);
+
+  const sections = [
+    {
+      id: 1,
+      sectionTitle: 'Popular',
+      data: popularMovies,
+    },
+    {
+      id: 2,
+      sectionTitle: 'Now Playing',
+      data: nowPlayingMovies,
+    },
+    {
+      id: 3,
+      sectionTitle: 'Top Rated',
+      data: topRatedMovies,
+    },
+    {
+      id: 4,
+      sectionTitle: 'Upcoming',
+      data: upcomingMovies,
+    },
+  ];
 
   return (
     <View style={screenStyle.container}>
       <FlatList
-        data={popularMovies}
+        data={sections}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
-          <Text style={{color: 'white'}}>{item.title}</Text>
+          <Section title={item.sectionTitle} data={item.data} />
         )}
       />
     </View>

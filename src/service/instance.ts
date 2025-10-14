@@ -6,6 +6,7 @@ const Client = axios.create();
 Client.defaults.baseURL = BASE_URL;
 Client.defaults.params = {
   api_key: API_KEY,
+  page: 2,
 };
 
 Client.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`;
