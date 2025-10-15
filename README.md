@@ -35,6 +35,16 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
 
 - Additional features and screens are being developed
 
+## 📸 Screenshots
+
+<div align="center">
+  <h3>🏠 Home Screen</h3>
+  <img src="src/assets/images/1-min.png" alt="Home Screen" width="250" style="border-radius: 8px; margin-bottom: 20px;"/>
+  
+  <h3>🎬 Movie Categories</h3>
+  <img src="src/assets/images/2-min.png" alt="Movie Categories" width="250" style="border-radius: 8px;"/>
+</div>
+
 ## 🛠 Tech Stack
 
 - **Framework:** React Native 0.82.0
