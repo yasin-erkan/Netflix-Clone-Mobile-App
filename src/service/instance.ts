@@ -10,6 +10,7 @@ Client.defaults.params = {
 };
 
 Client.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`;
+
 Client.defaults.headers.common['accept'] = 'application/json';
 
 export default Client;

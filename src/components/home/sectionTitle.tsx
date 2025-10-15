@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {SectionTitleProps} from '../../models/ui/sectionTitleProps';
 
-const SectionTitle: React.FC<SectionTitleProps> = ({title}) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({title, onPress}) => {
+  console.log('SectionTitle:', title);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <Text style={styles.seeAll}>See All ›</Text>
       </TouchableOpacity>
     </View>
@@ -33,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SectionTitle;
+export default memo(SectionTitle);

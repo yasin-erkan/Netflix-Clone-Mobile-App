@@ -18,8 +18,8 @@ interface Movie {
 interface MoviesState {
   popularMovies: Movie[];
   nowPlayingMovies: Movie[];
-  topRatedMovies: Movie[];;
-  upcomingMovies:Movie[]
+  topRatedMovies: Movie[];
+  upcomingMovies: Movie[];
   pending: boolean;
   error: SerializedError;
 }

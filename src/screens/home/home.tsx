@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Text, StyleSheet, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import {screenStyle} from '../../styles/defaultScreenStyle';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../store/store';
@@ -10,6 +10,7 @@ import {
   getUpcomingMovies,
 } from '../../store/actions/moviesActions';
 import Section from '../../components/home/section';
+import {CATEGORIES} from '../../utils/constants';
 
 const Home: React.FC = () => {
   const {popularMovies, nowPlayingMovies, topRatedMovies, upcomingMovies} =
@@ -28,21 +29,25 @@ const Home: React.FC = () => {
     {
       id: 1,
       sectionTitle: 'Popular',
+      category: CATEGORIES.POPULAR,
       data: popularMovies,
     },
     {
       id: 2,
       sectionTitle: 'Now Playing',
+      category: CATEGORIES.NOWPLAYING,
       data: nowPlayingMovies,
     },
     {
       id: 3,
       sectionTitle: 'Top Rated',
+      category: CATEGORIES.TOPRATED,
       data: topRatedMovies,
     },
     {
       id: 4,
       sectionTitle: 'Upcoming',
+      category: CATEGORIES.UPCOMING,
       data: upcomingMovies,
     },
   ];
@@ -53,7 +58,11 @@ const Home: React.FC = () => {
         data={sections}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
-          <Section title={item.sectionTitle} data={item.data} />
+          <Section
+            title={item.sectionTitle}
+            data={item.data}
+            category={item.category}
+          />
         )}
       />
     </View>

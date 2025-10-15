@@ -1,13 +1,20 @@
-import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import React, {memo, useCallback} from 'react';
+import {View, StyleSheet, FlatList} from 'react-native';
 import SectionTitle from './sectionTitle';
 import MovieCard from '../movies/movieCard';
 import {SectionProps} from '../../models/ui/sectionProps';
+import {useNavigation} from '@react-navigation/native';
+import {MOVIELIST} from '../../utils/routes';
 
-const Section: React.FC<SectionProps> = ({data, title}) => {
+const Section: React.FC<SectionProps> = ({data, title, category}) => {
+  const navigation = useNavigation();
+  const handleNavigate = useCallback(() => {
+    navigation.navigate(MOVIELIST, {category: category});
+  }, []);
+
   return (
     <View style={styles.container}>
-      <SectionTitle title={title} />
+      <SectionTitle title={title} onPress={handleNavigate} />
       <FlatList
         data={data}
         renderItem={({item}) => <MovieCard movie={item} />}
@@ -26,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Section;
+export default memo(Section);
