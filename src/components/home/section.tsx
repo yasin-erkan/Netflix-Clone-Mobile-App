@@ -5,12 +5,19 @@ import MovieCard from '../movies/movieCard';
 import {SectionProps} from '../../models/ui/sectionProps';
 import {useNavigation} from '@react-navigation/native';
 import {MOVIELIST} from '../../utils/routes';
+import {CATEGORIES} from '../../utils/constants';
+
+type RootStackParamList = {
+  'Movie List': {
+    category: CATEGORIES;
+  };
+};
 
 const Section: React.FC<SectionProps> = ({data, title, category}) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const handleNavigate = useCallback(() => {
     navigation.navigate(MOVIELIST, {category: category});
-  }, []);
+  }, [navigation, category]);
 
   return (
     <View style={styles.container}>

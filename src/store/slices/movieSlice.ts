@@ -6,6 +6,7 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
 } from '../actions/moviesActions';
+import {CATEGORIES} from '../../utils/constants';
 
 const initialState: MoviesState = {
   popularMovies: [],
@@ -14,6 +15,29 @@ const initialState: MoviesState = {
   upcomingMovies: [],
   pending: false,
   error: {},
+  selectedCategory: {},
+  categories: [
+    {
+      id: 1,
+      category: CATEGORIES.NOWPLAYING,
+      categoryTitle: 'Now Playing',
+    },
+    {
+      id: 2,
+      category: CATEGORIES.POPULAR,
+      categoryTitle: 'Popular',
+    },
+    {
+      id: 3,
+      category: CATEGORIES.TOPRATED,
+      categoryTitle: 'Top Rated',
+    },
+    {
+      id: 4,
+      category: CATEGORIES.UPCOMING,
+      categoryTitle: 'Upcoming',
+    },
+  ],
 };
 
 const moviesSlice = createSlice({

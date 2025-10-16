@@ -3,7 +3,6 @@ import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {SectionTitleProps} from '../../models/ui/sectionTitleProps';
 
 const SectionTitle: React.FC<SectionTitleProps> = ({title, onPress}) => {
-  console.log('SectionTitle:', title);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

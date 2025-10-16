@@ -15,6 +15,11 @@ interface Movie {
   poster_path: string;
 }
 
+interface Category {
+  id?: number;
+  category?: string;
+  categoryTitle?: string;
+}
 interface MoviesState {
   popularMovies: Movie[];
   nowPlayingMovies: Movie[];
@@ -22,6 +27,8 @@ interface MoviesState {
   upcomingMovies: Movie[];
   pending: boolean;
   error: SerializedError;
+  categories: Category[];
+  selectedCategory: Category;
 }
 
-export type {MoviesState, Movie};
+export type {MoviesState, Movie, Category};

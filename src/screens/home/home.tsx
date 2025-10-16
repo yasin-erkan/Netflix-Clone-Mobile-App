@@ -21,9 +21,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     dispatch(getPopularMovies({page: 1}));
     dispatch(getNowPlayingMovies({page: 2}));
-    dispatch(getTopRatedMovies({page: 3}));
+    dispatch(getTopRatedMovies({page: 1}));
     dispatch(getUpcomingMovies({page: 4}));
-  }, []);
+  }, [dispatch]);
 
   const sections = [
     {
@@ -68,17 +68,5 @@ const Home: React.FC = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 30,
-    color: 'white',
-  },
-});
 
 export default Home;
