@@ -2,12 +2,11 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Accounts from '../screens/accounts';
 import BottomTabNAvigator from './bottomTabNavigator';
-import {ACCOUNTS, BOTTOMTAB, MOVIELIST} from '../utils/routes';
+import {ACCOUNTS, BOTTOMTAB, MOVIEDETAIL, MOVIELIST} from '../utils/routes';
 import MovieList from '../screens/movies/movieList';
+import MovieDetail from '../screens/movies/movieDetail';
 
-interface Props {}
-
-const RootNavigator: React.FC<Props> = () => {
+const RootNavigator: React.FC = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -31,6 +30,7 @@ const RootNavigator: React.FC<Props> = () => {
         component={BottomTabNAvigator}
       />
       <Stack.Screen name={MOVIELIST} component={MovieList} />
+      <Stack.Screen name={MOVIEDETAIL} component={MovieDetail} />
     </Stack.Navigator>
   );
 };

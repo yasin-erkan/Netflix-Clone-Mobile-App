@@ -8,3 +8,5 @@ export const SEARCH = 'Search';
 export const DOWNLOADS = 'Downloads';
 
 export const MOVIELIST = 'Movie List';
+
+export const MOVIEDETAIL = 'Movie Detail';

@@ -2,15 +2,16 @@ import axios from 'axios';
 import {BASE_URL} from './urls';
 import {API_KEY, TOKEN} from '../utils/constants';
 
-const Client = axios.create();
-Client.defaults.baseURL = BASE_URL;
-Client.defaults.params = {
-  api_key: API_KEY,
-  page: 2,
-};
-
-Client.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`;
-
-Client.defaults.headers.common['accept'] = 'application/json';
+const Client = axios.create({
+  baseURL: BASE_URL,
+  timeout: 10000, // 10 saniye timeout
+  params: {
+    api_key: API_KEY,
+  },
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+    accept: 'application/json',
+  },
+});
 
 export default Client;

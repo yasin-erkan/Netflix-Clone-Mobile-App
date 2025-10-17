@@ -5,11 +5,13 @@ import {CategoryCardProps} from '../../models/ui/categoryCardProps';
 const CategoryCard: React.FC<CategoryCardProps> = ({
   category,
   isActive = false,
+  onPress,
 }) => {
   return (
     <TouchableOpacity
       style={[styles.container, isActive && styles.activeContainer]}
-      activeOpacity={0.7}>
+      activeOpacity={0.7}
+      onPress={onPress}>
       <Text style={[styles.text, isActive && styles.activeText]}>
         {category.categoryTitle}
       </Text>

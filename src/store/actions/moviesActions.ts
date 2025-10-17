@@ -4,6 +4,7 @@ import {
   NOW_PLAYING_URL,
   TOP_RATED_URL,
   UPCOMING_URL,
+  MOVIE_DETAIL_URL,
 } from '../../service/urls';
 import {getRequest} from '../../service/verbs';
 
@@ -15,6 +16,7 @@ const getPopularMovies = createAsyncThunk(
       return response.data.results;
     } catch (error: any) {
       console.error('Popular API Error:', error.message);
+      console.error('Error Response:', error.response?.data);
       throw error;
     }
   },
@@ -28,6 +30,7 @@ const getNowPlayingMovies = createAsyncThunk(
       return response.data.results;
     } catch (error: any) {
       console.error('Now Playing API Error:', error.message);
+      console.error('Error Response:', error.response?.data);
       throw error;
     }
   },
@@ -41,6 +44,7 @@ const getTopRatedMovies = createAsyncThunk(
       return response.data.results;
     } catch (error: any) {
       console.error('Top Rated API Error:', error.message);
+      console.error('Error Response:', error.response?.data);
       throw error;
     }
   },
@@ -54,6 +58,23 @@ const getUpcomingMovies = createAsyncThunk(
       return response.data.results;
     } catch (error: any) {
       console.error('Upcoming API Error:', error.message);
+      console.error('Error Response:', error.response?.data);
+      throw error;
+    }
+  },
+);
+
+const getMovieDetail = createAsyncThunk(
+  'movies/getMovieDetail',
+  async movieId => {
+    try {
+      const url = MOVIE_DETAIL_URL + movieId;
+      const response = await getRequest(url, {});
+      console.log('movie detail', response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Popular API Error:', error.message);
+      console.error('Error Response:', error.response?.data);
       throw error;
     }
   },
@@ -64,4 +85,5 @@ export {
   getNowPlayingMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getMovieDetail,
 };

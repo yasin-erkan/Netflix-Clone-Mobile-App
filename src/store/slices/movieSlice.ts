@@ -5,6 +5,7 @@ import {
   getNowPlayingMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getMovieDetail,
 } from '../actions/moviesActions';
 import {CATEGORIES} from '../../utils/constants';
 
@@ -16,6 +17,8 @@ const initialState: MoviesState = {
   pending: false,
   error: {},
   selectedCategory: {},
+  movieDetailData: {},
+  pendingMovieDetail: false,
   categories: [
     {
       id: 1,
@@ -43,7 +46,11 @@ const initialState: MoviesState = {
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getPopularMovies.pending, state => {
@@ -92,8 +99,21 @@ const moviesSlice = createSlice({
       .addCase(getUpcomingMovies.rejected, (state, action) => {
         state.pending = false;
         state.error = action.error;
+      })
+
+      .addCase(getMovieDetail.pending, state => {
+        state.pending = true;
+      })
+      .addCase(getMovieDetail.fulfilled, (state, action) => {
+        state.movieDetailData = action.payload;
+        state.pending = false;
+      })
+      .addCase(getMovieDetail.rejected, (state, action) => {
+        state.pending = false;
+        state.error = action.error;
       });
   },
 });
 
+export const {setSelectedCategory} = moviesSlice.actions;
 export default moviesSlice.reducer;
