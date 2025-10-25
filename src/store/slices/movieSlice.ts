@@ -6,6 +6,7 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
   getMovieDetail,
+  getMovieSearch,
 } from '../actions/moviesActions';
 import {CATEGORIES} from '../../utils/constants';
 
@@ -15,6 +16,10 @@ const initialState: MoviesState = {
   topRatedMovies: [],
   upcomingMovies: [],
   movieDetailData: null,
+  searchResults: [],
+  myList: [],
+  continueWatching: [],
+  watchLater: [],
   pending: false,
   error: {},
   selectedCategory: {},
@@ -45,7 +50,53 @@ const initialState: MoviesState = {
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {},
+  reducers: {
+    addToMyList: (state, action) => {
+      const movie = action.payload;
+      const exists = state.myList.find(m => m.id === movie.id);
+      if (!exists) {
+        state.myList.push(movie);
+      }
+    },
+    removeFromMyList: (state, action) => {
+      const movieId = action.payload;
+      state.myList = state.myList.filter(m => m.id !== movieId);
+    },
+    addToContinueWatching: (state, action) => {
+      const movie = action.payload;
+      const exists = state.continueWatching.find(m => m.id === movie.id);
+      if (!exists) {
+        state.continueWatching.unshift(movie);
+      } else {
+        // Move to top if already exists
+        state.continueWatching = state.continueWatching.filter(
+          m => m.id !== movie.id,
+        );
+        state.continueWatching.unshift(movie);
+      }
+      // Keep only last 10
+      if (state.continueWatching.length > 10) {
+        state.continueWatching = state.continueWatching.slice(0, 10);
+      }
+    },
+    removeFromContinueWatching: (state, action) => {
+      const movieId = action.payload;
+      state.continueWatching = state.continueWatching.filter(
+        m => m.id !== movieId,
+      );
+    },
+    addToWatchLater: (state, action) => {
+      const movie = action.payload;
+      const exists = state.watchLater.find(m => m.id === movie.id);
+      if (!exists) {
+        state.watchLater.push(movie);
+      }
+    },
+    removeFromWatchLater: (state, action) => {
+      const movieId = action.payload;
+      state.watchLater = state.watchLater.filter(m => m.id !== movieId);
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getPopularMovies.pending, state => {
@@ -106,8 +157,27 @@ const moviesSlice = createSlice({
       .addCase(getMovieDetail.rejected, (state, action) => {
         state.pending = false;
         state.error = action.error;
+      })
+      .addCase(getMovieSearch.pending, state => {
+        state.pending = true;
+      })
+      .addCase(getMovieSearch.fulfilled, (state, action) => {
+        state.searchResults = action.payload.results || [];
+        state.pending = false;
+      })
+      .addCase(getMovieSearch.rejected, (state, action) => {
+        state.pending = false;
+        state.error = action.error;
       });
   },
 });
 
+export const {
+  addToMyList,
+  removeFromMyList,
+  addToContinueWatching,
+  removeFromContinueWatching,
+  addToWatchLater,
+  removeFromWatchLater,
+} = moviesSlice.actions;
 export default moviesSlice.reducer;

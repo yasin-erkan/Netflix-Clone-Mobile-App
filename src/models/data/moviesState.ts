@@ -29,6 +29,10 @@ interface MoviesState {
   topRatedMovies: Movie[];
   upcomingMovies: Movie[];
   movieDetailData: Movie | null;
+  searchResults: Movie[];
+  myList: Movie[];
+  continueWatching: Movie[];
+  watchLater: Movie[];
   pending: boolean;
   error: SerializedError;
   categories: Category[];

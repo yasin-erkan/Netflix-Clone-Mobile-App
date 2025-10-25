@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/home/home';
-import MyList from '../screens/movies/movieList';
+import MyList from '../screens/my list';
 import Search from '../screens/search/search';
 import Downloads from '../screens/downloads/downloads';
 import {HOME, MYLIST, SEARCH, DOWNLOADS} from '../utils/routes';
@@ -16,9 +16,7 @@ const BottomTabNavigator: React.FC = () => {
         tabBarStyle: {
           backgroundColor: 'black',
         },
-        headerStyle: {backgroundColor: 'black'},
-        headerTintColor: 'white',
-
+        headerShown: false,
         tabBarIcon: ({size, focused, color}) => (
           <TabBarIcon
             name={route.name}

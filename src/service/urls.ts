@@ -10,5 +10,6 @@ export const TOP_RATED_URL = 'movie/top_rated';
 
 export const UPCOMING_URL = 'movie/upcoming';
 
-
 export const MOVIE_DETAIL_URL = 'movie/{movieId}';
+
+export const MOVIE_SEARCH_URL = 'search/movie';
