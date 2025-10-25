@@ -24,7 +24,7 @@ const Section: React.FC<SectionProps> = ({data, title, category}) => {
       <SectionTitle title={title} onPress={handleNavigate} />
       <FlatList
         data={data}
-        renderItem={({item}) => <MovieCard movie={item} />}
+        renderItem={({item}) => <MovieCard movie={item} isHorizontal={true} />}
         keyExtractor={item => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}

@@ -4,6 +4,7 @@ import {
   NOW_PLAYING_URL,
   TOP_RATED_URL,
   UPCOMING_URL,
+  MOVIE_DETAIL_URL,
 } from '../../service/urls';
 import {getRequest} from '../../service/verbs';
 
@@ -59,9 +60,28 @@ const getUpcomingMovies = createAsyncThunk(
   },
 );
 
+const getMovieDetail = createAsyncThunk(
+  'movies/getMovieDetail',
+  async (movieId: number) => {
+    try {
+      const url = `movie/${movieId}`;
+      const response = await getRequest(url, {});
+      console.log('Movie Detail:', response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error(
+        'Movie Detail API Error:',
+        error.response?.data || error.message,
+      );
+      throw error;
+    }
+  },
+);
+
 export {
   getPopularMovies,
   getNowPlayingMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getMovieDetail,
 };

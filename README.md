@@ -8,8 +8,9 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
 
 ### ✅ Current Features
 
-- **Bottom Tab Navigation** with 4 main sections:
+- **Bottom Tab Navigation** with 5 main sections:
   - Home
+  - Movies
   - News
   - Search
   - Downloads
@@ -18,6 +19,15 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
   - Now Playing
   - Top Rated
   - Upcoming
+- **Movie List Screen** with category filtering
+- **Movie Detail Screen** featuring:
+  - Hero section with backdrop image and play button
+  - Movie poster with shadow effects
+  - Title, rating, and release year
+  - Genre tags and duration
+  - Overview with expandable "Read More" functionality
+  - "You May Also Like" section with horizontal scrolling
+  - Action buttons (My List, Rate, Share)
 - **Movie Cards** with:
   - High-quality posters from TMDB
   - Movie titles
@@ -42,7 +52,10 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
   <img src="src/assets/images/1-min.png" alt="Home Screen" width="250" style="border-radius: 8px; margin-bottom: 20px;"/>
   
   <h3>🎬 Movie Categories</h3>
-  <img src="src/assets/images/2-min.png" alt="Movie Categories" width="250" style="border-radius: 8px;"/>
+  <img src="src/assets/images/2-min.png" alt="Movie Categories" width="250" style="border-radius: 8px; margin-bottom: 20px;"/>
+  
+  <h3>🎬 Movie Detail Screen</h3>
+  <img src="src/assets/images/detail.png" alt="Movie Detail" width="250" style="border-radius: 8px;"/>
 </div>
 
 ## 🛠 Tech Stack
@@ -131,9 +144,9 @@ netflixClone/
 │   │   ├── data/
 │   │   └── ui/
 │   ├── router/          # Navigation configuration
-│   ├── screens/         # Application screens
+│   ├── screens/         #  Application screens
 │   │   ├── home/
-│   │   ├── news/
+│   │   ├── myList/
 │   │   ├── search/
 │   │   └── downloads/
 │   ├── service/         # API configuration

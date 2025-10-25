@@ -5,6 +5,7 @@ import {
   getNowPlayingMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getMovieDetail,
 } from '../actions/moviesActions';
 import {CATEGORIES} from '../../utils/constants';
 
@@ -13,6 +14,7 @@ const initialState: MoviesState = {
   nowPlayingMovies: [],
   topRatedMovies: [],
   upcomingMovies: [],
+  movieDetailData: null,
   pending: false,
   error: {},
   selectedCategory: {},
@@ -90,6 +92,18 @@ const moviesSlice = createSlice({
         state.pending = false;
       })
       .addCase(getUpcomingMovies.rejected, (state, action) => {
+        state.pending = false;
+        state.error = action.error;
+      })
+
+      .addCase(getMovieDetail.pending, state => {
+        state.pending = true;
+      })
+      .addCase(getMovieDetail.fulfilled, (state, action) => {
+        state.movieDetailData = action.payload;
+        state.pending = false;
+      })
+      .addCase(getMovieDetail.rejected, (state, action) => {
         state.pending = false;
         state.error = action.error;
       });

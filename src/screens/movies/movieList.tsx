@@ -4,7 +4,7 @@ import {screenStyle} from '../../styles/defaultScreenStyle';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import MovieCard from '../../components/movies/movieCard';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {CATEGORIES} from '../../utils/constants';
 import CategoryCard from '../../components/movies/categoryCard';
 
@@ -14,11 +14,8 @@ type RootStackParamList = {
   };
 };
 
-type Props = {
-  route: RouteProp<RootStackParamList, 'Movie List'>;
-};
-
-const MovieList: React.FC<Props> = ({route}) => {
+const MovieList: React.FC = () => {
+  const route = useRoute<RouteProp<RootStackParamList, 'Movie List'>>();
   const {
     nowPlayingMovies,
     topRatedMovies,
@@ -95,13 +92,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   movieList: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingTop: 15,
     paddingBottom: 20,
   },
   columnWrapper: {
     justifyContent: 'space-between',
-    marginBottom: 20,
+    paddingHorizontal: 4,
   },
 });
 export default MovieList;

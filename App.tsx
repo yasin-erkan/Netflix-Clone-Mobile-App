@@ -8,9 +8,11 @@ import {store} from './src/store/store';
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 };

@@ -3,10 +3,10 @@ import {Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {screenStyle} from '../../styles/defaultScreenStyle';
 
-const News: React.FC = () => {
+const MyList: React.FC = () => {
   return (
     <SafeAreaView style={screenStyle.container}>
-      <Text style={{fontSize: 30, color: 'white'}}>News</Text>
+      <Text style={{fontSize: 30, color: 'white'}}>My List</Text>
     </SafeAreaView>
   );
 };
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
 });
-export default News;
+export default MyList;

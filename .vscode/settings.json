@@ -4,19 +4,19 @@
   "editor.tabCompletion": "on",
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   
-  // AI ve IntelliSense Ayarları
-  "editor.inlineSuggest.enabled": true,
-  "editor.suggest.preview": true,
+  // AI ve IntelliSense Ayarları - KAPALI
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggest.preview": false,
   "editor.quickSuggestions": {
-    "other": true,
-    "comments": true,
-    "strings": true
+    "other": false,
+    "comments": false,
+    "strings": false
   },
   "editor.suggestSelection": "first",
-  "editor.acceptSuggestionOnCommitCharacter": true,
-  "editor.acceptSuggestionOnEnter": "on",
-  "editor.wordBasedSuggestions": "matchingDocuments",
-  "editor.parameterHints.enabled": true,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.wordBasedSuggestions": "off",
+  "editor.parameterHints.enabled": false,
   
   // Dil Bazlı Ayarlar
   "[typescript]": {
@@ -40,11 +40,11 @@
     "editor.formatOnSave": true
   },
   
-  // TypeScript Ayarları
-  "typescript.suggest.autoImports": true,
+  // TypeScript Ayarları - AI ÖNERİLERİ KAPALI
+  "typescript.suggest.autoImports": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "javascript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   
   // Cursor AI Ayarları
@@ -57,6 +57,7 @@
   "files.autoSaveDelay": 1000,
   "cSpell.words": [
     "MOVIELIST"
-  ]
+  ],
+  "postman.settings.dotenv-detection-notification-visibility": false
 }
 
