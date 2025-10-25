@@ -8,12 +8,11 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
 
 ### ✅ Current Features
 
-- **Bottom Tab Navigation** with 5 main sections:
-  - Home
-  - Movies
-  - News
-  - Search
-  - Downloads
+- **Bottom Tab Navigation** with 4 main sections:
+  - Home (Popular, Now Playing, Top Rated, Upcoming)
+  - My List (Save favorite movies)
+  - Search (Find movies)
+  - Downloads (Watch Later list)
 - **Home Screen** with movie sections:
   - Popular Movies
   - Now Playing
@@ -26,8 +25,11 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
   - Title, rating, and release year
   - Genre tags and duration
   - Overview with expandable "Read More" functionality
-  - "You May Also Like" section with horizontal scrolling
-  - Action buttons (My List, Rate, Share)
+  - "You May Also Like" section with horizontal scrolling (random recommendations)
+  - Action buttons (Add to My List, Rate, Watch Later)
+- **My List**: Save and remove your favorite movies
+- **Watch Later** (Downloads): Create your watch list
+- **Search**: Real-time movie search with TMDB API
 - **Movie Cards** with:
   - High-quality posters from TMDB
   - Movie titles
@@ -48,14 +50,14 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
 ## 📸 Screenshots
 
 <div align="center">
-  <h3>🏠 Home Screen</h3>
-  <img src="src/assets/images/1-min.png" alt="Home Screen" width="250" style="border-radius: 8px; margin-bottom: 20px;"/>
-  
-  <h3>🎬 Movie Categories</h3>
-  <img src="src/assets/images/2-min.png" alt="Movie Categories" width="250" style="border-radius: 8px; margin-bottom: 20px;"/>
-  
-  <h3>🎬 Movie Detail Screen</h3>
-  <img src="src/assets/images/detail.png" alt="Movie Detail" width="250" style="border-radius: 8px;"/>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
+    <img src="src/assets/images/1-min.png" alt="Home Screen" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/2-min.png" alt="Movie Categories" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/3-detail.png" alt="Movie Detail" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/4-mylist.png" alt="My List" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/5-search.png" alt="Search" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/6-watchLater.png" alt="Watch Later" width="150" style="border-radius: 8px;"/>
+  </div>
 </div>
 
 ## 🛠 Tech Stack

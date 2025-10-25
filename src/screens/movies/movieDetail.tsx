@@ -14,14 +14,18 @@ import {screenStyle} from '../../styles/defaultScreenStyle';
 import {AppDispatch, RootState} from '../../store/store';
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import {getMovieDetail} from '../../store/actions/moviesActions';
+import {addToMyList, addToWatchLater} from '../../store/slices/movieSlice';
 import {IMAGE_BASE_URL} from '../../service/urls';
 import MovieCard from '../../components/movies/movieCard';
+import {MY_LIST, DOWNLOADS} from '../../utils/routes';
 
 const {width, height} = Dimensions.get('window');
 
 const MovieDetail: React.FC<any> = ({route}) => {
   const dispatch: AppDispatch = useDispatch();
+  const navigation = useNavigation();
   const movieId = route.params.movieId;
   const {movieDetailData, pending, popularMovies} = useSelector(
     (state: RootState) => state.movies,
@@ -31,6 +35,13 @@ const MovieDetail: React.FC<any> = ({route}) => {
   useEffect(() => {
     dispatch(getMovieDetail(movieId));
   }, []);
+
+  // Shuffle and get random movies for "You May Also Like"
+  const getRandomMovies = () => {
+    if (!popularMovies || popularMovies.length === 0) return [];
+    const shuffled = [...popularMovies].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 6);
+  };
 
   if (pending || !movieDetailData) {
     return (
@@ -109,7 +120,35 @@ const MovieDetail: React.FC<any> = ({route}) => {
           )}
         </View>
 
-        <Text style={styles.sectionTitle}>Overview</Text>
+        <View style={styles.overviewHeader}>
+          <Text style={styles.sectionTitle}>Overview</Text>
+          {/* Action Buttons */}
+          <View style={styles.actionButtonsContainer}>
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => {
+                dispatch(addToMyList(movieDetailData));
+                navigation.navigate(MY_LIST as never);
+              }}>
+              <Text style={styles.actionIcon}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.actionButton}>
+              <Text style={styles.actionIcon}>👍</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => {
+                dispatch(addToWatchLater(movieDetailData));
+                // Navigate to bottom tab first, then to Downloads
+                navigation.getParent()?.navigate('BottomTab' as never);
+                setTimeout(() => {
+                  navigation.getParent()?.navigate(DOWNLOADS as never);
+                }, 100);
+              }}>
+              <Text style={styles.actionIcon}>⬇</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
         <Text style={styles.overview} numberOfLines={expanded ? undefined : 3}>
           {movieDetailData.overview}
         </Text>
@@ -126,29 +165,13 @@ const MovieDetail: React.FC<any> = ({route}) => {
         {/* You May Also Like */}
         <Text style={styles.sectionTitle}>You May Also Like</Text>
         <FlatList
-          data={popularMovies.slice(0, 6)}
+          data={getRandomMovies()}
           renderItem={({item}) => <MovieCard movie={item} isHorizontal />}
           keyExtractor={item => item.id.toString()}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.similarMoviesContainer}
         />
-
-        {/* Action Buttons */}
-        <View style={styles.actionButtonsContainer}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text style={styles.actionIcon}>+</Text>
-            <Text style={styles.actionText}>My List</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text style={styles.actionIcon}>👍</Text>
-            <Text style={styles.actionText}>Rate</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text style={styles.actionIcon}>↗</Text>
-            <Text style={styles.actionText}>Share</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </ScrollView>
   );
@@ -315,18 +338,24 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
   },
+  overviewHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 12,
+  },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-    marginBottom: 12,
-    marginTop: 5,
+    marginBottom: 10,
   },
   overview: {
     fontSize: 16,
     color: '#ccc',
     lineHeight: 24,
-    marginBottom: 8,
+    marginBottom: 10,
   },
   readMoreButton: {
     marginTop: 4,
@@ -344,22 +373,16 @@ const styles = StyleSheet.create({
   },
   actionButtonsContainer: {
     flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'space-around',
-    marginLeft: 20,
+    gap: 20,
   },
   actionButton: {
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
   },
   actionIcon: {
-    fontSize: 28,
+    fontSize: 22,
+    gap: 10,
     color: '#fff',
-  },
-  actionText: {
-    fontSize: 13,
-    color: '#ccc',
-    fontWeight: '500',
   },
   similarMoviesContainer: {
     paddingLeft: 20,

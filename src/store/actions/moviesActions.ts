@@ -4,7 +4,7 @@ import {
   NOW_PLAYING_URL,
   TOP_RATED_URL,
   UPCOMING_URL,
-  MOVIE_DETAIL_URL,
+  MOVIE_SEARCH_URL,
 } from '../../service/urls';
 import {getRequest} from '../../service/verbs';
 
@@ -66,11 +66,28 @@ const getMovieDetail = createAsyncThunk(
     try {
       const url = `movie/${movieId}`;
       const response = await getRequest(url, {});
-      console.log('Movie Detail:', response.data);
       return response.data;
     } catch (error: any) {
       console.error(
         'Movie Detail API Error:',
+        error.response?.data || error.message,
+      );
+      throw error;
+    }
+  },
+);
+
+const getMovieSearch = createAsyncThunk(
+  'movies/getMovieSearch',
+  async (query: string) => {
+    try {
+      const url = `search/movie`;
+      const response = await getRequest(MOVIE_SEARCH_URL, {query: query});
+      console.log('Movie Search Response:', response);
+      return response.data;
+    } catch (error: any) {
+      console.error(
+        'Movie Search API Error:',
         error.response?.data || error.message,
       );
       throw error;
@@ -84,4 +101,5 @@ export {
   getTopRatedMovies,
   getUpcomingMovies,
   getMovieDetail,
+  getMovieSearch,
 };

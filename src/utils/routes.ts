@@ -10,3 +10,8 @@ export const DOWNLOADS = 'Downloads';
 export const MOVIELIST = 'Movie List';
 
 export const MOVIE_DETAIL = 'Movie Detail';
+
+
+
+
+export const MY_LIST = 'My List';

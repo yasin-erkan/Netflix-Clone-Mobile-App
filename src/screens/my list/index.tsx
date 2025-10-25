@@ -3,32 +3,32 @@ import {Text, StyleSheet, FlatList, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState, AppDispatch} from '../../store/store';
-import {removeFromWatchLater} from '../../store/slices/movieSlice';
+import {removeFromMyList} from '../../store/slices/movieSlice';
 import MovieCard from '../../components/movies/movieCard';
 
-const Downloads: React.FC = () => {
+const MyList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const {watchLater} = useSelector((state: RootState) => state.movies);
+  const {myList} = useSelector((state: RootState) => state.movies);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Watch Later</Text>
-      {watchLater.length === 0 ? (
+      <Text style={styles.title}>Favorite Movies</Text>
+      {myList.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>Your watch list is empty</Text>
+          <Text style={styles.emptyText}>Your list is empty</Text>
           <Text style={styles.emptySubtext}>
-            Add movies you want to watch later
+            Add movies from the detail page
           </Text>
         </View>
       ) : (
         <FlatList
           numColumns={2}
-          data={watchLater}
+          data={myList}
           renderItem={({item}) => (
             <MovieCard
               movie={item}
               showRemoveButton={true}
-              onRemove={() => dispatch(removeFromWatchLater(item.id))}
+              onRemove={() => dispatch(removeFromMyList(item.id))}
             />
           )}
           keyExtractor={item => item.id.toString()}
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     color: '#fff',
     fontWeight: 'bold',
     paddingHorizontal: 20,
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
-export default Downloads;
+export default MyList;
