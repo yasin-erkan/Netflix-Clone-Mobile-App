@@ -53,7 +53,10 @@ https://github.com/yasin-erkan/Netflix-Clone-Mobile-App This project replicates 
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
     <img src="src/assets/images/1-min.png" alt="Home Screen" width="150" style="border-radius: 8px;"/>
     <img src="src/assets/images/2-min.png" alt="Movie Categories" width="150" style="border-radius: 8px;"/>
-    <img src="src/assets/images/detail.png" alt="Movie Detail" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/3-detail.png" alt="Movie Detail" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/4-mylist.png" alt="My List" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/5-search.png" alt="Search" width="150" style="border-radius: 8px;"/>
+    <img src="src/assets/images/6-watchLater.png" alt="Watch Later" width="150" style="border-radius: 8px;"/>
   </div>
 </div>
 
