@@ -83,7 +83,6 @@ const getMovieSearch = createAsyncThunk(
     try {
       const url = `search/movie`;
       const response = await getRequest(MOVIE_SEARCH_URL, {query: query});
-      console.log('Movie Search Response:', response);
       return response.data;
     } catch (error: any) {
       console.error(

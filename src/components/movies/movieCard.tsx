@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, StyleSheet, Image, TouchableOpacity, View} from 'react-native';
 import {IMAGE_BASE_URL} from '../../service/urls';
 import {MovieCardProps} from '../../models/ui/movieCardProps';
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieCard;
+export default memo(MovieCard);
